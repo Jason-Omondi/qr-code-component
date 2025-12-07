@@ -1,0 +1,52 @@
+name: Frontend CI
+
+on:
+  push:
+    branches:
+      - develop
+  pull_request:
+    branches:
+      - develop
+      - main
+
+jobs:
+  build-and-validate:
+    runs-on: ubuntu-latest
+
+    steps:
+      # STEP 1 — Checkout repo
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      # STEP 2 — Setup Node (needed for any frontend tooling now or later)
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+
+      # STEP 3 — Install dependencies if package.json exists (safe check)
+      - name: Install dependencies
+        if: hashFiles('package.json') != ''
+        run: npm install
+
+      # STEP 4 — HTML validation (basic)
+      - name: Validate HTML
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y tidy
+          find . -name "*.html" -print0 | xargs -0 -I{} tidy -qe {}
+
+      # STEP 5 — CSS validation (using stylelint if present)
+      - name: Validate CSS (optional)
+        if: hashFiles('.stylelintrc*') != ''
+        run: npx stylelint "**/*.css"
+
+      # STEP 6 — Basic JS linting (ESLint if your project later includes it)
+      - name: Lint JavaScript (optional)
+        if: hashFiles('.eslintrc*') != ''
+        run: npx eslint "**/*.js"
+
+      # STEP 7 — Build step for future React/Next.js upgrades
+      - name: Build project (optional)
+        if: hashFiles('package.json') != ''
+        run: npm run build --if-present
