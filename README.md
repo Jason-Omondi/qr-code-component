@@ -1,19 +1,98 @@
-# Using the Figma design file
+# QR Code Component — Frontend Mentor Practice + Custom Enhancements
 
-Using this design file will help you practice building projects in the same way professionals do. Seeing the details in the design will help you improve your accuracy and build projects faster.
+This project is a practice challenge based on the **Frontend Mentor QR Code Component** design.  
+The goal is to build a **pixel-perfect**, **accessible**, and **responsive** implementation while learning the fundamentals of:
 
-[Figma](https://www.figma.com/) is an extremely popular design tool with a generous free tier and support for both Windows and Mac computers.
+- HTML (semantic structure)
+- CSS (variables, layout, flex, responsive design)
+- JavaScript (DOM, events, dynamic QR generation)
+- Git workflows (feature → develop → main)
+- GitHub Pages deployment
+- GitHub Actions CI automation
 
-To get started with Figma, [download the correct app for your operating system](https://www.figma.com/downloads/). You can then open the app and open the `.fig` design file by dragging it over the app or using the "import" button.
-
-If you're going to use the Desktop App, you don't need to download the Font Installer from the downloads page. But if you're planning on using the Figma web app you should download and install it to ensure the fonts show up correctly.
-
-If you haven't used Figma before, we recommend reading our "[Figma for developers: How to work with a design file](https://www.frontendmentor.io/articles/figma-for-developers-how-to-work-with-a-design-file-m6CZKZ1rC1)" article. 
-
----
-
-**⚠️ IMPORTANT ⚠️: Please be sure not to share our design files with anyone else. We include `.gitignore` files in the starter code download to help prevent you from accidentally uploading it to GitHub. Another easy way to prevent this is to keep the design file separate from your codebase.**
+We also add **our own custom features** on top of the original challenge to build real-world experience.
 
 ---
 
-We hope you enjoy the challenge! 🙂
+## 🚀 Live Demo (GitHub Pages)
+
+> This project auto-deploys to **GitHub Pages** whenever code is merged from `develop` → `main`.  
+> (Pages works on all public repositories under the free plan.)
+
+🔗 **Live URL:**  
+https://<your-username>.github.io/qr-code-component/
+
+Replace `<your-username>` with your GitHub name after deployment runs.
+
+---
+
+## 📁 Project Structure
+
+qr-code-component/
+├── assets/
+│ └── images/
+│ └── image-qr-code.png
+├── css/
+│ └── styles.css
+├── js/
+│ └── script.js
+├── index.html
+└── README.md
+
+---
+
+## 🎨 Style Guide
+
+### Colors (from challenge)
+- **White:** hsl(0, 0%, 100%)
+- **Slate 300:** hsl(212, 45%, 89%)
+- **Slate 500:** hsl(216, 15%, 48%)
+- **Slate 900:** hsl(218, 44%, 22%)
+
+### Typography
+- Font: **Outfit** (weights 400, 700)
+- Base size: **15px**
+
+---
+
+## 🧩 Custom Functionality Added
+
+This project extends the original challenge with additional features:
+
+### ✔ Click-to-Copy URL  
+Clicking the QR code copies its encoded link to the clipboard.
+
+### ✔ Dynamic QR code generation  
+You can swap the static PNG for a **generated QR** using JavaScript/QRCode.js.
+
+### ✔ Visual "Copied!" feedback  
+The QR temporarily displays a message when clicked.
+
+### ✔ GitHub Actions CI  
+- HTML validation (`tidy`)
+- Optional CSS linting (stylelint)
+- Optional JS linting (ESLint)
+
+### ✔ Auto-Deployment to GitHub Pages  
+Every merge into `main` triggers a Pages deployment.
+
+---
+
+## 🛠️ Tech Stack
+
+- **HTML5** (semantic layout)
+- **CSS3** (variables, flexbox)
+- **JavaScript** (DOM events, QR generation)
+- **QRCode.js** (optional)
+- **Git & GitHub**
+- **GitHub Actions** (CI/CD)
+- **GitHub Pages** (hosting)
+
+---
+
+## 🌱 How to Run Locally
+
+### 1. Clone the repo
+```bash
+git clone https://github.com/Jason-Omondi/qr-code-component.git
+cd qr-code-component
