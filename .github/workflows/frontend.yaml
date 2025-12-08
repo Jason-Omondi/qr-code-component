@@ -56,7 +56,8 @@ jobs:
         if: hashFiles('package.json') != ''
         run: npm run build --if-present
 
-  # Deploy ONLY when PR is merged into main
+  # Deploy ONLY when code is pushed directly to main
+  # (This happens after a PR from develop is merged)
   deploy:
     if: github.event_name == 'push' && github.ref == 'refs/heads/main'
     needs: build-and-validate
@@ -66,6 +67,9 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
 
     steps:
+      - name: 🚀 Deploying to GitHub Pages
+        run: echo "Deploying from main branch..."
+
       - name: Checkout code
         uses: actions/checkout@v4
 
@@ -80,3 +84,6 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v2
+
+      - name: ✅ Deployment Complete
+        run: echo "Live at ${{ steps.deployment.outputs.page_url }}"
